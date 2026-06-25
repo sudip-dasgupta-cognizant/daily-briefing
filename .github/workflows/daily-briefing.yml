@@ -1,0 +1,35 @@
+name: Daily AI Briefing
+
+on:
+  schedule:
+    - cron: '30 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  deliver-briefing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily briefing
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+          BRIEFING_NAME: ${{ secrets.BRIEFING_NAME }}
+          BRIEFING_CITY: ${{ secrets.BRIEFING_CITY }}
+          BRIEFING_TOPICS: ${{ secrets.BRIEFING_TOPICS }}
+          BRIEFING_TIME: ${{ secrets.BRIEFING_TIME }}
+        run: python main.py
