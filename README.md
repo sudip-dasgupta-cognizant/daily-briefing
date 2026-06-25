@@ -104,6 +104,10 @@ All secrets and preferences are stored in `.env` (never committed to git).
 | `GMAIL_ADDRESS` | The Gmail address used to **send** the email, e.g. `yourname@gmail.com`. |
 | `GMAIL_APP_PASSWORD` | A 16-character Google App Password (not your regular Gmail password).  Generate one at *Google Account → Security → App Passwords*. |
 | `TO_EMAIL` | The recipient email address where the briefing should be delivered.  Can be the same as `GMAIL_ADDRESS`. |
+| BRIEFING_NAME | Your first name | Example : John |
+| BRIEFING_CITY | Your city for weather | Kolkata |
+| BRIEFING_TOPICS | Comma-separated news topics | AI,Technology,Finance,Cricket |
+| BRIEFING_TIME | Daily run time in HH:MM 24hr format | 07:00 |
 
 ---
 
